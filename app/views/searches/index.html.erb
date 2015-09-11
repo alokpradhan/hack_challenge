@@ -1,2 +1,22 @@
-<%= render partial: 'searches/search_form', locals: {:search => @search} %>
-<%= render partial: 'searches/show', locals: {:search_result => @search_result} %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render partial: 'searches/search_form', locals: {:search => @search} %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+  <table id = 'search-results' class="table table-hover">
+    <thead>
+      <th>Agency</th>
+      <th>Stop Location</th>
+      <th>Stop Distance</th>
+      <th>Departure Time</th>
+    </thead>
+    <%= @search_result.each do |search_result| %>
+        <%= render partial: 'searches/show', locals: {:search_result => search_result} %>
+    <% end %>
+  </table>
+  </div>
+</div>
