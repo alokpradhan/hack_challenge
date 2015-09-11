@@ -2,24 +2,16 @@ class SearchesController < ApplicationController
 
   def index
     @search = Search.new
-    # transit = TransitData.new('2601:646:c600:252f:53b:cfb5:78f1:4c42')
     @search_result = TransitData.new.next_departure_from_stop
-    # transit.stop_coordinates
-    # .stop_coordinates
-    # TransitData.new.stops_by_route('AC Transit', '1', 'South')[0]['stop_code']
-    # TransitData.new.populate_stops
-    # TransitData.new.user_location('2601:646:c600:252f:53b:cfb5:78f1:4c42')
-    # request.remote_ip
-    # TransitData.new.stops_by_route
-    # stops_by_route
-    # next_departure_from_stop
   end
 
   def create
     @search = Search.new(whitelisted_search_params)
+
     transit = TransitData.new(request.remote_ip)
     agency = params[:agency]
     stop = params[:stop]
+
     @search_result = transit.next_departures(agency, stop)
     redirect_to searches_path
 
@@ -36,9 +28,7 @@ class SearchesController < ApplicationController
     # end
   end
 
-
   def show
-
   end
 
   private
