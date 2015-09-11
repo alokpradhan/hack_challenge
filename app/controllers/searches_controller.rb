@@ -2,7 +2,7 @@ class SearchesController < ApplicationController
 
   def index
     @search = Search.new
-    transit = TransitData.new('2601:646:c600:252f:53b:cfb5:78f1:4c42')
+    # transit = TransitData.new('2601:646:c600:252f:53b:cfb5:78f1:4c42')
     @search_result = TransitData.new.next_departure_from_stop
     # transit.stop_coordinates
     # .stop_coordinates
@@ -17,18 +17,23 @@ class SearchesController < ApplicationController
 
   def create
     @search = Search.new(whitelisted_search_params)
+    transit = TransitData.new(request.remote_ip)
+    agency = params[:agency]
+    stop = params[:stop]
+    @search_result = transit.next_departures(agency, stop)
+    redirect_to searches_path
 
-    respond_to do |format|
-      if @search.save
-        flash[:success] = "Searched"
-        format.html {redirect_to  searches_path}
-        format.js
-      else
-        flash[:error] = "Unable to search"
-        format.html {redirect_to searches_path}
-        format.js {redirect_to searches_path}
-      end
-    end
+    # respond_to do |format|
+    #   if @search.save
+    #     flash[:success] = "Searching"
+    #     format.html {redirect_to searches_path}
+    #     format.js
+    #   else
+    #     flash[:error] = "Unable to search"
+    #     format.html {redirect_to searches_path}
+    #     format.js {redirect_to searches_path}
+    #   end
+    # end
   end
 
 

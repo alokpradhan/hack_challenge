@@ -49,6 +49,10 @@ def next_departure_from_stop(direction=false)
   end
 end
 
+def next_departures(agency, stop)
+
+end
+
 def nearby_stops
   nearby_stops = []
   Stop.all.each do |specific_stop|
@@ -98,8 +102,3 @@ def create_stop(agency, route_code, transit_stop, direction='NA')
 end
 
 end
-
-# 1. Get stop code and name
-# 2. Get stop coordinates
-# 3. Find distance between current location and stop coordinates
-# 4. Stop.create(agency, name, code)
