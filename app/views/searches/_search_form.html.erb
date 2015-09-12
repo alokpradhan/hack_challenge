@@ -1,17 +1,51 @@
 <%= form_for search do |f| %>
 
-  <%= f.label :origin %>
-  <%= f.text_field :origin %>
+  <div class='row'>
+    <div class='col-sm-2'>
+    <%= f.label :origin %>
+    </div>
+    <div class='col-sm-10'>
+    <%= f.text_field :origin %>
+    </div>
+  </div>
 
-  <%= f.label :destination %>
-  <%= f.text_field :destination %>
+  <br>
 
-  <%= f.label :agency %>
-  <%= f.text_field :agency %>
+  <div class='row'>
+    <div class='col-sm-2'>
+    <%= f.label :destination %>
+    </div>
+    <div class='col-sm-10'>
+    <%= f.text_field :destination %>
+    </div>
+  </div>
 
-  <%= f.label :stop %>
-  <%= f.text_field :stop %>
+  <br>
 
-  <%= f.submit 'Find!', class: "btn btn-block btn-default" %>
+  <div class='row'>
+    <div class='col-sm-2'>
+    <%= f.label :agency %>
+    </div>
+    <div class='col-sm-10'>
+    <%= f.text_field :agency %>
+    </div>
+  </div>
+
+  <br>
+
+  <div class='row'>
+    <div class='col-sm-2'>
+    <%= f.label :stop %>
+    </div>
+    <div class='col-sm-10'>
+    <%= f.text_field :stop %>
+    </div>
+  </div>
+
+  <br>
+
+  <%= f.submit 'Find!', class: "btn btn-block btn-success" %>
+
+  <br>
 
 <% end %>

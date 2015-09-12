@@ -14,9 +14,10 @@
       <th>Stop Distance</th>
       <th>Departure Time</th>
     </thead>
-    <%= @search_result.each do |search_result| %>
+    <% @search_result.each do |search_result| %>
         <%= render partial: 'searches/show', locals: {:search_result => search_result} %>
     <% end %>
   </table>
+
   </div>
 </div>

@@ -26,6 +26,7 @@ class SearchesController < ApplicationController
     #     format.js {redirect_to searches_path}
     #   end
     # end
+
   end
 
   def show
